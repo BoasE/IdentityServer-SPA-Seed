@@ -1,0 +1,12 @@
+FROM microsoft/aspnetcore-build:2.0 AS builder
+WORKDIR /source
+COPY . .
+RUN dotnet restore
+RUN dotnet build
+RUN dotnet publish src/IdentityServer.Administration/IdentityServer.Administration.csproj -o /dockerout/ --configuration Release
+
+FROM microsoft/aspnetcore:2.0
+WORKDIR /app
+EXPOSE 80 5000
+COPY --from=builder /dockerout .
+ENTRYPOINT ["dotnet", "IdentityServer.Administration.dll"]

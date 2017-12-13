@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DFF21B2A-7F52-448D-8867-D1C4EEAF73A7}"
+ProjectSection(SolutionItems) = preProject
+	docker-compose.yml = docker-compose.yml
+	Dockerfile.IdentityServerAdministration = Dockerfile.IdentityServerAdministration
+	Dockerfile.IdentityServer = Dockerfile.IdentityServer
+	build.sh = build.sh
+	watch.sh = watch.sh
+EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.MongoDb", "src\IdentityServer.MongoDb\IdentityServer.MongoDb.csproj", "{26E897BA-2170-47BF-ABBF-973189057384}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Shared", "src\Identity.Shared\Identity.Shared.csproj", "{638BEBB1-317C-467D-8DC2-A95218D128B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "src\IdentityServer\IdentityServer.csproj", "{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Administration", "src\IdentityServer.Administration\IdentityServer.Administration.csproj", "{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26E897BA-2170-47BF-ABBF-973189057384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26E897BA-2170-47BF-ABBF-973189057384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E897BA-2170-47BF-ABBF-973189057384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26E897BA-2170-47BF-ABBF-973189057384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{638BEBB1-317C-467D-8DC2-A95218D128B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638BEBB1-317C-467D-8DC2-A95218D128B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638BEBB1-317C-467D-8DC2-A95218D128B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638BEBB1-317C-467D-8DC2-A95218D128B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26E897BA-2170-47BF-ABBF-973189057384} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
+		{638BEBB1-317C-467D-8DC2-A95218D128B8} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
+		{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
+		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71FF1454-F266-41EF-AEC7-A31B0C5E392F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+
+  identitydb:
+    image: 'mongo:3.2.4'
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+
+  identityservice:
+    image: identityserver
+    ports:
+     - "80:80"
+     
+  identityserviceadministration:
+    image: identityserver.administration
+    ports:
+     - "5001:80"
