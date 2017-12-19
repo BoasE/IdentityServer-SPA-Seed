@@ -1,0 +1,31 @@
+version: "2"
+
+services: 
+
+  identitydb:
+    image: 'mongo:3.2.4'
+    ports:
+      - "27017:27017"
+    restart: unless-stopped
+
+  identityserver:
+      image: idsrvspaseed_identityserver
+      container_name: identityserver
+      environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - HOST_IP
+      ports:
+        - "80:80"
+      volumes:
+      - ./cert.pfx:/app/cert.pfx
+      
+  identityserveradministration:
+      image: idsrvspaseed_identityserver_administration
+      container_name: identityserver_administration
+      environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+        - HOST_IP
+      ports:
+        - "5001:80"
+      volumes:
+      - ./cert.pfx:/app/cert.pfx

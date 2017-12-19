@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using IdentityModel.Client;
+using Newtonsoft.Json.Linq;
 
 namespace IdentityServer.UserClient {
     class Program {
@@ -15,8 +17,14 @@ namespace IdentityServer.UserClient {
 
         public static async Task MainAsync(string[] args)
         {
+            var HOST_IP = Environment.GetEnvironmentVariable("HOST_IP");
+            
            // discover endpoints from metadata
-            var disco = await DiscoveryClient.GetAsync ("http://localhost");
+            var formattableString = $"http://{HOST_IP}";
+            Console.WriteLine(formattableString);
+            var discoveryClient = new DiscoveryClient(formattableString);
+            discoveryClient.Policy.RequireHttps = false;
+            var disco = await discoveryClient.GetAsync();
             if (disco.IsError) {
                 Console.WriteLine (disco.Error);
                 return;
@@ -32,6 +40,22 @@ namespace IdentityServer.UserClient {
             }
 
             Console.WriteLine (tokenResponse.Json);
+            
+            // call api
+            var client = new HttpClient();
+            client.SetBearerToken(tokenResponse.AccessToken);
+
+            var response = await client.GetAsync($"http://{HOST_IP}:5001/api/users");
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"status {response.StatusCode}");
+            }
+            else
+            {
+                Console.WriteLine($"API Status Code {response.StatusCode}");
+//                var content = await response.Content.ReadAsStringAsync();
+//                Console.WriteLine(JArray.Parse(content));
+            }
         }
     }
 }

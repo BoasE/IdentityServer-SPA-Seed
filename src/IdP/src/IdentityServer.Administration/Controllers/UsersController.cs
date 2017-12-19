@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer.MongoDb;
 using IdentityServer.MongoDb.dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Tavis;
@@ -13,6 +14,7 @@ using Tavis;
 namespace IdentityServer.Administration.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     public class UsersController : Controller
     {
         private readonly MongoUserStore _userStore;

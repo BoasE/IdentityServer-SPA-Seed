@@ -10,8 +10,13 @@ ProjectSection(SolutionItems) = preProject
 	docker-compose.yml = docker-compose.yml
 	Dockerfile.IdentityServerAdministration = Dockerfile.IdentityServerAdministration
 	Dockerfile.IdentityServer = Dockerfile.IdentityServer
-	build.sh = build.sh
 	watch.sh = watch.sh
+	..\..\create_signing_cert.sh = ..\..\create_signing_cert.sh
+	..\..\docker-compose.yml = ..\..\docker-compose.yml
+	..\..\build.sh = ..\..\build.sh
+	..\..\start.sh = ..\..\start.sh
+	..\tools\ip.js = ..\tools\ip.js
+	..\..\start_userclient.sh = ..\..\start_userclient.sh
 EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.MongoDb", "src\IdentityServer.MongoDb\IdentityServer.MongoDb.csproj", "{26E897BA-2170-47BF-ABBF-973189057384}"
@@ -21,6 +26,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "src\IdentityServer\IdentityServer.csproj", "{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Administration", "src\IdentityServer.Administration\IdentityServer.Administration.csproj", "{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.UserClient", "src\IdentityServer.UserClient\IdentityServer.UserClient.csproj", "{A565DEE1-32EB-4432-A949-7A7C471465F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +51,10 @@ Global
 		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A565DEE1-32EB-4432-A949-7A7C471465F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A565DEE1-32EB-4432-A949-7A7C471465F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A565DEE1-32EB-4432-A949-7A7C471465F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A565DEE1-32EB-4432-A949-7A7C471465F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +64,7 @@ Global
 		{638BEBB1-317C-467D-8DC2-A95218D128B8} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
 		{04027C4E-3DD1-4E2A-AB60-A6BED2270C0A} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
 		{4BB107E4-CFA4-4944-ACBE-B69F95CCA04D} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
+		{A565DEE1-32EB-4432-A949-7A7C471465F7} = {2408EC7B-2E06-46A5-B6AC-D4E985E30CBB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {71FF1454-F266-41EF-AEC7-A31B0C5E392F}

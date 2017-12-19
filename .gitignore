@@ -1,3 +1,9 @@
+### Certs ###
+*.pem
+*.pfx
+*.key
+*.cer
+
 ### Node.js ###
 node_modules
 

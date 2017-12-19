@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using Identity.Shared;
 using IdentityModel;
+using IdentityServer;
 using IdentityServer.MongoDb;
 using IdentityServer.MongoDb.dto;
 using IdentityServer.Startup;
@@ -58,7 +59,7 @@ namespace QuickstartIdentityServer
             
 
             services.AddIdentityServer()
-                .AddSigningCredential(CertificateStore.LoadFromConfiguration(Configuration))
+                .AddSigningCredential(SigningCertificate.GetSigningCertificate())
                 .AddMongoRepository()
                 .AddInMemoryIdentityResources(Config.GetIdentityResources())
                 .AddIdentityApiResources()

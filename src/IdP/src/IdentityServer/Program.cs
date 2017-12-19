@@ -9,6 +9,7 @@ namespace QuickstartIdentityServer
         public static void Main(string[] args)
         {
             Console.Title = "IdentityServer";
+            Console.WriteLine("IdSrv is starting");
 
             BuildWebHost(args).Run();
         }

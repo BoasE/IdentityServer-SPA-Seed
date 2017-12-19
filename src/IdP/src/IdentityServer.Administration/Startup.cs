@@ -32,6 +32,9 @@ namespace IdentityServer.Administration
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            var HOST_IP = Environment.GetEnvironmentVariable("HOST_IP");
+            
             var database = services.AddMongoDatabase(Configuration);
             services.AddDataProtection()
                 .SetApplicationName("identityserver")
@@ -40,6 +43,15 @@ namespace IdentityServer.Administration
             services.AddSingleton<MongoUserStore>(mongoUserStore);
             services.AddRepositories(database);
             services.AddMvc();
+            
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = $"http://{HOST_IP}";
+                    options.RequireHttpsMetadata = false;
+
+                    options.ApiName = "users";
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +61,7 @@ namespace IdentityServer.Administration
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
