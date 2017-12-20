@@ -59,6 +59,7 @@ namespace IdentityServer.Administration.Controllers
                     var contentResult = new ContentResult();
                     contentResult.Content = await new ProblemContent(problem).ReadAsStringAsync();
                     contentResult.ContentType = "application/problem+json";
+                    contentResult.StatusCode = (int?) HttpStatusCode.BadRequest;
                     return await Task.FromResult(contentResult);
                 }
 
