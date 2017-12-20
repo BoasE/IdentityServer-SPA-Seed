@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using IdentityModel.Client;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace IdentityServer.UserClient {
@@ -44,18 +46,59 @@ namespace IdentityServer.UserClient {
             // call api
             var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
+            
+            Console.WriteLine("Add new User");
+            Console.WriteLine("Username");
+            var username = Console.ReadLine();
+            Console.WriteLine("Email");
+            var email = Console.ReadLine();
+            Console.WriteLine("Password");
+            var password = Console.ReadLine();
 
-            var response = await client.GetAsync($"http://{HOST_IP}:5001/api/users");
+            var user = new AddUserDto
+            {
+                Username = username,
+                Password = password,
+                Email = email
+            };
+
+            var response = await client.PostAsJsonAsync<AddUserDto>($"http://{HOST_IP}:5001/api/users", user);
+
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine($"status {response.StatusCode}");
+                Console.WriteLine($"Error status code {response.StatusCode}");
+                Console.WriteLine($"Error body {response.Content?.ReadAsStringAsync().Result}");
             }
             else
             {
-                Console.WriteLine($"API Status Code {response.StatusCode}");
-//                var content = await response.Content.ReadAsStringAsync();
-//                Console.WriteLine(JArray.Parse(content));
+                Console.WriteLine($"User created");
             }
         }
+    }
+    
+    public static class HttpClientExtensions
+    {
+        public static Task<HttpResponseMessage> PostAsJsonAsync<T>(
+            this HttpClient httpClient, string url, T data)
+        {
+            var dataAsString = JsonConvert.SerializeObject(data);
+            var content = new StringContent(dataAsString);
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            return httpClient.PostAsync(url, content);
+        }
+
+        public static async Task<T> ReadAsJsonAsync<T>(this HttpContent content)
+        {
+            var dataAsString = await content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(dataAsString);
+        }
+    }
+
+
+    public class AddUserDto
+    {
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
